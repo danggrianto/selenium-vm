@@ -1,8 +1,8 @@
-
+chef_solo_cookbook_path = ["cookbooks", "site-cookbooks"]
 CHEF_CLIENT_INSTALL = <<-EOF
 #!/bin/sh
-apt-get update
 dpkg -l curl|grep -q ^ii || {
+  apt-get update
   apt-get install -y curl
 }
 
@@ -29,5 +29,10 @@ Vagrant::configure("2") do |config|
                        ]
         end
       selenium_solo.vm.provision :shell, :inline => CHEF_CLIENT_INSTALL
+
+      selenium_solo.vm.provision :chef_solo do |chef_solo|
+        chef_solo.cookbooks_path = chef_solo_cookbook_path
+        chef_solo.add_recipe 'selenium-grid'
+      end
   end
 end
