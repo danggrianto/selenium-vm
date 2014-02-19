@@ -17,20 +17,20 @@ Vagrant::configure("2") do |config|
   config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04-i386_provisionerless.box"
   
   # Configure Selenium Grid
-  config.vm.define :'selenium-solo' do |selenium_solo|
-    selenium_solo.vm.network :private_network, ip: "10.212.0.11"
-        selenium_solo.vm.hostname = "selenium.local.vm"
-        selenium_solo.vm.provider :virtualbox do |vb|
+  config.vm.define :'selenium-grid' do |selenium_grid|
+    selenium_grid.vm.network :private_network, ip: "192.168.1.99"
+        selenium_grid.vm.hostname = "selenium.local.vm"
+        selenium_grid.vm.provider :virtualbox do |vb|
           vb.customize [
                         "modifyvm", :id,
-                        "--name", "selenium-solo",
+                        "--name", "selenium-grid",
                         "--memory", "512",
                         "--cpus", 1,
                        ]
         end
-      selenium_solo.vm.provision :shell, :inline => CHEF_CLIENT_INSTALL
+      selenium_grid.vm.provision :shell, :inline => CHEF_CLIENT_INSTALL
 
-      selenium_solo.vm.provision :chef_solo do |chef_solo|
+      selenium_grid.vm.provision :chef_solo do |chef_solo|
         chef_solo.cookbooks_path = chef_solo_cookbook_path
         chef_solo.add_recipe 'selenium-grid'
       end
