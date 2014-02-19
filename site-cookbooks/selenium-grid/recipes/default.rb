@@ -8,9 +8,7 @@
 #
 
 node.override['supervisor']['version'] = '3.0a12'
-
-include_recipe 'selenium::bats-handler'
-
+include_recipe 'selenium-grid::bats-handler'
 include_recipe 'java'
 include_recipe 'supervisor'
 include_recipe 'google-chrome'
