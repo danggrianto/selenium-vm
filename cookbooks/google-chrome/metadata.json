@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "apt": ">= 0.0.0"
+  },
+  "name": "google-chrome",
+  "maintainer_email": "jjhuff@mspin.net",
+  "attributes": {
+  },
+  "license": "Apache 2.0",
+  "suggestions": {
+  },
+  "platforms": {
+    "ubuntu": ">= 0.0.0"
+  },
+  "maintainer": "Justin Huff",
+  "long_description": "Install Google's Chrome browser (use the chromium package for the open source version).\n\nBy default, the recipe installs the stable version of chrome.  However, you can set the track by setting a node/role attribute:\n    \"google-chrome\" => { \"track\" => \"beta\" }\n",
+  "version": "0.0.1",
+  "recommendations": {
+  },
+  "recipes": {
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "replacing": {
+  },
+  "description": "Installs Google Chrome",
+  "providing": {
+  }
+}
