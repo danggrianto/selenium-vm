@@ -1,0 +1,8 @@
+default['selenium']['dir'] = '/opt/local/selenium_grid'
+default['selenium']['url'] = 'http://selenium.googlecode.com/files'
+default['selenium']['jar'] =  'selenium-server-standalone-2.39.0.jar'
+default['selenium']['config'] = 'config.json'
+default['chromedriver']['url'] = 'http://chromedriver.storage.googleapis.com'
+default['chromedriver']['version'] = '2.8'
+default['chromedriver']['zip'] = 'chromedriver_linux64.zip'
+default['chromedriver']['exe'] = 'chromedriver'
