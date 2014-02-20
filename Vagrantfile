@@ -13,12 +13,12 @@ test -d /opt/chef || {
 EOF
 
 Vagrant::configure("2") do |config|
-  config.vm.box = "opscode-ubuntu-12.04-i386"
-  config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04-i386_provisionerless.box"
+  config.vm.box = "Ubuntu Precise 32"
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
   
   # Configure Selenium Grid
   config.vm.define :'selenium-grid' do |selenium_grid|
-    selenium_grid.vm.network :private_network, ip: "192.168.1.99"
+    selenium_grid.vm.network :private_network, ip: "192.168.10.10"
         selenium_grid.vm.hostname = "selenium.local.vm"
         selenium_grid.vm.provider :virtualbox do |vb|
           vb.customize [
