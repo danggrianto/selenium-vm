@@ -5,9 +5,8 @@ This file is used to list changes made in each version of the selenium-grid cook
 
 0.1.0
 -----
-- [your_name] - Initial release of selenium-grid
+- Daniel Anggrianto - Initial release of selenium-grid
 
-- - -
-Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
-
-The [Github Flavored Markdown page](http://github.github.com/github-flavored-markdown/) describes the differences between markdown on github and standard markdown.
+0.2.0
+-----
+- Daniel Anggrianto - Adding x11vnc and java-vnc for vnc viewing

@@ -17,7 +17,7 @@ include_recipe 'google-chrome'
 #
 # Install packages
 #
-%w(firefox x11vnc xorg unzip).each do |pkg|
+%w(firefox x11vnc xorg unzip vnc-java).each do |pkg|
   package pkg do
     action :install
   end
@@ -74,10 +74,16 @@ end
 supervisor_service 'startx' do
     command 'startx'
     user 'root'
-    notifies :start, 'supervisor_service[hub]'
+    notifies :start, 'supervisor_service[x11vnc]'
     action [ :enable, :start ]
 end
 
+supervisor_service 'x11vnc' do
+    command 'x11vnc -safer -viewonly -httpdir /usr/share/vnc-java/ -httpport 5800'
+    user 'root'
+    notifies :start, 'supervisor_service[hub]'
+    action [ :enable, :start ]
+end
 supervisor_service 'hub' do
     environment 'DISPLAY' => ':0'
     user 'root'

@@ -2,6 +2,18 @@
       test -x /usr/bin/unzip
 }
 
+@test "startx should be installed" {
+      test -x /usr/bin/startx
+}
+
+@test "x11vnc should be installed" {
+      test -x /usr/bin/x11vnc
+}
+
+@test "vnc-java should be installed" {
+      ls /usr/share/ | grep vnc-java
+}
+
 @test "google chrome should exist" {
       test -x /usr/bin/google-chrome
 }
@@ -31,6 +43,14 @@
     do
         grep $browser "/opt/local/selenium_grid/config.json"
     done
+}
+
+@test "startx should run" {
+      supervisorctl status | grep startx | grep RUNNING
+}
+
+@test "x11vnc should run" {
+      supervisorctl status | grep x11vnc | grep RUNNING
 }
 
 @test "selenium-server hub should run" {
