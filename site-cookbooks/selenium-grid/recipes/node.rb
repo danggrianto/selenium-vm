@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: selenium-grid
-# Recipe:: default
+# Recipe:: node
 #
 # Copyright 2014, Daniel Anggrianto
 #
@@ -11,6 +11,7 @@ include_recipe 'selenium-grid::bats-handler'
 include_recipe 'java'
 include_recipe 'supervisor'
 include_recipe 'google-chrome'
+node.override['selenium-grid']['grid']['hub']['url'] = '192.168.10.10'
 
 #
 # Install packages
@@ -83,15 +84,10 @@ end
 supervisor_service 'x11vnc' do
     command 'x11vnc -safer -httpdir /usr/share/vnc-java/ -httpport 5800'
     user 'root'
-    notifies :start, 'supervisor_service[hub]'
+    notifies :start, 'supervisor_service[node]'
     action [ :enable, :start ]
 end
-supervisor_service 'hub' do
-    environment 'DISPLAY' => ':0'
-    user 'root'
-    command "java -jar #{node['selenium']['dir']}/#{node['selenium']['jar']} -role hub -port 4444"
-    notifies :start, 'supervisor_service[node]', :delayed
-end
+
 
 supervisor_service 'node' do
     environment 'DISPLAY' => ':0'
