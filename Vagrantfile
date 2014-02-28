@@ -35,4 +35,64 @@ Vagrant::configure("2") do |config|
         chef_solo.add_recipe 'selenium-grid'
       end
   end
+
+    # Configure Selenium Node
+  config.vm.define :'node1' do |grid_node|
+    grid_node.vm.network :private_network, ip: "192.168.10.11"
+        grid_node.vm.hostname = "node.selenium.vm"
+        grid_node.vm.provider :virtualbox do |vb|
+          vb.customize [
+                        "modifyvm", :id,
+                        "--name", "node1",
+                        "--memory", "512",
+                        "--cpus", 1,
+                       ]
+        end
+      grid_node.vm.provision :shell, :inline => CHEF_CLIENT_INSTALL
+
+      grid_node.vm.provision :chef_solo do |chef_solo|
+        chef_solo.cookbooks_path = chef_solo_cookbook_path
+        chef_solo.add_recipe 'selenium-grid::node'
+      end
+  end
+
+    # Configure Selenium Node
+  config.vm.define :'node2' do |grid_node|
+    grid_node.vm.network :private_network, ip: "192.168.10.12"
+        grid_node.vm.hostname = "node.selenium.vm"
+        grid_node.vm.provider :virtualbox do |vb|
+          vb.customize [
+                        "modifyvm", :id,
+                        "--name", "node2",
+                        "--memory", "512",
+                        "--cpus", 1,
+                       ]
+        end
+      grid_node.vm.provision :shell, :inline => CHEF_CLIENT_INSTALL
+
+      grid_node.vm.provision :chef_solo do |chef_solo|
+        chef_solo.cookbooks_path = chef_solo_cookbook_path
+        chef_solo.add_recipe 'selenium-grid::node'
+      end
+  end
+
+    # Configure Selenium Node
+  config.vm.define :'node3' do |grid_node|
+    grid_node.vm.network :private_network, ip: "192.168.10.13"
+        grid_node.vm.hostname = "node.selenium.vm"
+        grid_node.vm.provider :virtualbox do |vb|
+          vb.customize [
+                        "modifyvm", :id,
+                        "--name", "node3",
+                        "--memory", "512",
+                        "--cpus", 1,
+                       ]
+        end
+      grid_node.vm.provision :shell, :inline => CHEF_CLIENT_INSTALL
+
+      grid_node.vm.provision :chef_solo do |chef_solo|
+        chef_solo.cookbooks_path = chef_solo_cookbook_path
+        chef_solo.add_recipe 'selenium-grid::node'
+      end
+  end
 end
