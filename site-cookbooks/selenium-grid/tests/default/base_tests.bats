@@ -10,10 +10,6 @@
       test -x /usr/bin/x11vnc
 }
 
-@test "vnc-java should be installed" {
-      ls /usr/share/ | grep vnc-java
-}
-
 @test "google chrome should exist" {
       test -x /usr/bin/google-chrome
 }
