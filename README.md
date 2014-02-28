@@ -10,5 +10,12 @@ These tools needs to be installed in your machine.
 
 ## How to use
 
-- Clone this repository and do `vagrant up` from inside the repo cloned.
+- Clone this repository and do `vagrant up <vm-name>` from inside the repo cloned.
 - Run selenium test with selenium hub url as `http://192.168.1.99:4444/wd/hub`
+
+## Hub + node
+To bring up hub + node vm `vagrant up selenium-vm`
+
+## Add more nodes
+`vagrant up node1` up to `node3`
+Add more vms to your Vagrantfile if this not sufficient.
