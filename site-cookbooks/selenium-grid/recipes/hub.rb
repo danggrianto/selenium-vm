@@ -38,5 +38,4 @@ end
 supervisor_service 'hub' do
     user 'root'
     command "java -jar #{node['selenium']['dir']}/#{node['selenium']['jar']} -role hub -port 4444"
-    notifies :start, 'supervisor_service[node]', :delayed
 end
