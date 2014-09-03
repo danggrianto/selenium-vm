@@ -7,7 +7,7 @@ default['selenium']['jar'] =  'selenium-server-standalone-2.42.0.jar'
 default['selenium']['config'] = 'config'
 
 default['chromedriver']['url'] = 'http://chromedriver.storage.googleapis.com'
-default['chromedriver']['version'] = '2.8'
+default['chromedriver']['version'] = '2.10'
 default['chromedriver']['zip'] = 'chromedriver_linux32.zip'
 default['chromedriver']['exe'] = 'chromedriver'
 
