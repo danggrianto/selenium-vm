@@ -18,8 +18,8 @@
       test -f /opt/local/selenium_grid/chromedriver
 }
 
-@test "should run chromedriver v2.8" {  
-    timeout 1s /opt/local/selenium_grid/chromedriver | grep v2.8
+@test "should run chromedriver v2.10" {  
+    timeout 1s /opt/local/selenium_grid/chromedriver | grep v2.10
 }
 
 @test "selenium-server should exist" {
