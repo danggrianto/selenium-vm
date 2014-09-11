@@ -23,7 +23,7 @@
 }
 
 @test "selenium-server should exist" {
-      test -f /opt/local/selenium_grid/selenium-server-standalone-2.42.0.jar 
+      test -f /opt/local/selenium_grid/selenium-server-standalone-2.43.0.jar 
 }
 
 @test "config file should exist" {
